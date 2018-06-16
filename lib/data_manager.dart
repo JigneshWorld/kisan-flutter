@@ -4,9 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 GoogleSignIn _googleSignIn = new GoogleSignIn(
-  scopes: [
-    'email'
-  ],
+  scopes: ['email'],
 );
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -26,4 +24,8 @@ Future<FirebaseUser> annonymusSignIn() async {
   FirebaseUser user = await _auth.signInAnonymously();
   print("signed in " + user.uid);
   return user;
+}
+
+Future<FirebaseUser> currentUser(){
+  return _auth.currentUser();
 }
