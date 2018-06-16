@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'manage_category.dart';
 import 'categories.dart';
+import 'crops.dart';
+import 'transactions.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,21 +32,21 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             RaisedButton(
-              child: Text("Add Category"),
+              child: Text("Crops"),
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ManageCategoryPage()));
+                        builder: (context) => CropsPage()));
               },
             ),
             RaisedButton(
-              child: Text("Add Transaction"),
+              child: Text("Transactions"),
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ManageCategoryPage()));
+                        builder: (context) => TransactionsPage()));
               },
             ),
           ],
