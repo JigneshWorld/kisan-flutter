@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kisan_flutter/data_manager.dart';
 
 void main() => runApp(new MyApp());
 
@@ -46,6 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    handleSignIn()
+    .then((FirebaseUser user) => print(user))
+    .catchError((e) => print(e));
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
