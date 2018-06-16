@@ -1,0 +1,75 @@
+{
+    "categories": [
+        {
+            "id": "fertilizers",
+            "title": "Fertilizers",
+            "type": "expense"
+        },
+        {
+            "id": "pestisides",
+            "title": "Pestisides",
+            "type": "expense"
+        },
+        {
+            "id": "seeds",
+            "title": "Seeds",
+            "type": "expense"
+        },
+        {
+            "id": "suppliments",
+            "title": "Suppliments",
+            "type": "expense"
+        },
+        {
+            "id": "fuel",
+            "title": "Fuel",
+            "type": "expense"
+        },
+        {
+            "id": "corp",
+            "title": "Corp",
+            "type": "expense"
+        },
+        {
+            "id": "electricity",
+            "title": "Electricity",
+            "type": "expense"
+        },
+        {
+            "id": "farming",
+            "title": "Farming",
+            "type": "expense"
+        },
+        {
+            "id": "tools",
+            "title": "Tools",
+            "type": "expense"
+        },
+        {
+            "id": "others_expense",
+            "title": "Others",
+            "type": "expense"
+        },
+        {
+            "id": "selling",
+            "title": "Selling",
+            "type": "income"
+        },
+        {
+            "id": "others_income",
+            "title": "Others",
+            "type": "income"
+        }
+    ],
+    "seasons": [
+        "Cotton",
+        "Mug",
+        "Rice",
+        "Wheat",
+        "Sugarcane",
+        "Ground-nut",
+        "Till",
+        "Castor",
+        "Jira"
+    ]
+}

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kisan_flutter/data_manager.dart';
+import 'manage_category.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,10 +19,21 @@ class _HomePageState extends State<HomePage> {
           title: Text("Kisan"),
         ),
         body: Center(
-          child: RaisedButton(
-            child: Text("Home Page"),
-            onPressed: () {
-            },
+          child: new Column(
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Add Category"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ManageCategoryPage()));        
+                },
+              ),
+              RaisedButton(
+                child: Text("Add Transaction"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ManageCategoryPage()));        
+                },
+              ),
+            ],
           ),
         ),
       ),
