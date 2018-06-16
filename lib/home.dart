@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kisan_flutter/data_manager.dart';
 import 'manage_category.dart';
+import 'categories.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,23 +17,37 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text("Kisan"),
         ),
-        body: Center(
-          child: new Column(
-            children: <Widget>[
-              RaisedButton(
-                child: Text("Add Category"),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ManageCategoryPage()));        
-                },
-              ),
-              RaisedButton(
-                child: Text("Add Transaction"),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ManageCategoryPage()));        
-                },
-              ),
-            ],
-          ),
+        body: new Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            RaisedButton(
+              child: Text("Categories"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CategoriesPage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("Add Category"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ManageCategoryPage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("Add Transaction"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ManageCategoryPage()));
+              },
+            ),
+          ],
         ),
       ),
     );

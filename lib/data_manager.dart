@@ -44,3 +44,27 @@ Future<Null> addCategory(String category, String type) async {
   };
   await _categoryRef.setData(_data);
 }
+
+class Category{
+
+  Category({this.id, this.title, this.type});
+
+  String id;
+  String title;
+  String type;
+
+  @override
+    String toString() {
+      return "$id - $title - $type";
+    }
+}
+
+Future<List<Category>> listCategories() async {
+  FirebaseUser _user = await currentUser();
+  QuerySnapshot querySnapshot = await _firestore.collection('users/${_user.uid}/categories').getDocuments();
+  List<Category> categories = querySnapshot.documents.map((DocumentSnapshot document){
+    print('Map Category '+ document.data['title']);
+    return Category(id: document.data['id'], title: document.data['title'], type: document.data['type']);
+  }).toList(growable: false);
+  return categories;
+}
