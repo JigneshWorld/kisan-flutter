@@ -23,6 +23,7 @@ class _ManageTransactionPageState extends State<ManageTransactionPage> {
   void handleTxnTypeValueChanged(String value) {
     setState(() {
       txnType = value;
+      _selectedCategory = null;
     });
   }
 
@@ -32,6 +33,8 @@ class _ManageTransactionPageState extends State<ManageTransactionPage> {
       paymentStatus = value;
     });
   }
+
+  String _selectedCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +51,13 @@ class _ManageTransactionPageState extends State<ManageTransactionPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Amount'),
+                  new SizedBox(
+                    width: 250.0,
+                    child: Text('Amount')),
                   new Flexible(
                     child: TextFormField(
                       controller: amountController,
+                      keyboardType: TextInputType.number,
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter some text';
@@ -85,16 +91,34 @@ class _ManageTransactionPageState extends State<ManageTransactionPage> {
               ),
               Row(
                 children: <Widget>[
-                  Text("Category"),
-                  DropdownButton<String>(
-                    hint: Text('Select Category'),
-                    items: List<DropdownMenuItem<String>>.generate(5, (index) {
-                      return DropdownMenuItem<String>(
-                        value: "Item - $index",
-                        child: Text("Item - $index"),
-                      );
-                    }),
-                    onChanged: (_) {},
+                  new SizedBox(
+                    width: 250.0,
+                    child: Text("Category")),
+                  new FutureBuilder(
+                    future: listCategories(type: txnType),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Category>> snapshot) {
+                      if (snapshot.data != null) {
+                        return DropdownButton<String>(
+                          hint: Text('Select Category'),
+                          value: _selectedCategory,
+                          items: List<DropdownMenuItem<String>>.generate(
+                              snapshot.data.length, (index) {
+                            return DropdownMenuItem<String>(
+                              value: snapshot.data[index].id,
+                              child: Text(snapshot.data[index].title),
+                            );
+                          }),
+                          onChanged: (String newSelection) {
+                            setState(() {
+                              _selectedCategory = newSelection;
+                            });
+                          },
+                        );
+                      } else {
+                        return Text('Loading Categories');
+                      }
+                    },
                   )
                 ],
               ),
@@ -137,7 +161,7 @@ class _ManageTransactionPageState extends State<ManageTransactionPage> {
                       addTransaction(
                           int.parse(amountController.text),
                           txnType,
-                          "category",
+                          _selectedCategory,
                           noteController.text,
                           paymentStatus,
                           DateTime.now()).then((_) {

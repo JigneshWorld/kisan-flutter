@@ -57,11 +57,16 @@ class Category {
   }
 }
 
-Future<List<Category>> listCategories() async {
+Future<List<Category>> listCategories({String type}) async {
   FirebaseUser _user = await currentUser();
-  QuerySnapshot querySnapshot = await _firestore
-      .collection('users/${_user.uid}/categories')
-      .getDocuments();
+  CollectionReference _categoriesCollection = _firestore.collection('users/${_user.uid}/categories');
+  QuerySnapshot querySnapshot;
+  if(type != null){
+    querySnapshot = await _categoriesCollection.where('type', isEqualTo: type).getDocuments();
+  }else{
+    querySnapshot = await _categoriesCollection.getDocuments();
+  }
+
   List<Category> categories =
       querySnapshot.documents.map((DocumentSnapshot document) {
     return Category(
