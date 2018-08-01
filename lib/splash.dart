@@ -18,9 +18,11 @@ class _SplashPageState extends State<SplashPage> {
     currentUser().then((FirebaseUser user) {
       if (user != null) {
         print(user);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));        
-      }else{
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      } else {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
       }
     }).catchError((e) => print(e));
   }
