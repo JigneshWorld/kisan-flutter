@@ -23,8 +23,8 @@ class _CropsPageState extends State<CropsPage> {
             new Flexible(
               child: FutureBuilder(
                 future: listCrops(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<Crop>> snapshot) {
+                builder:
+                    (BuildContext context, AsyncSnapshot<List<Crop>> snapshot) {
                   if (snapshot.data != null) {
                     return ListView.builder(
                       itemCount: snapshot.data.length,
@@ -43,10 +43,8 @@ class _CropsPageState extends State<CropsPage> {
             RaisedButton(
               child: Text("Add Crops"),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ManageCropPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ManageCropPage()));
               },
             ),
           ],
